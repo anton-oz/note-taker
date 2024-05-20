@@ -45,12 +45,11 @@ app.post('/api/notes', (req, res) => {
             });
         };
         });
-    res.redirect('notes.html');
+    res.redirect('/notes');
 });
 
 app.get('/api/notes/:id', (req, res) => {
     const noteId = parseInt(req.params.id);
-    console.log(noteId)
     if (noteDb.length === 0) {
         const errorObj = {
             error: "no notes in array."
@@ -71,12 +70,24 @@ app.get('/api/notes/:id', (req, res) => {
 });  
 
 app.delete('/api/notes/:id', (req, res) => {
-    const noteId = req.params.id;
-    
-
+    const noteId = parseInt(req.params.id);
+    for (note in noteDb) {
+        if (noteDb[note].id === noteId) {
+            noteDb.splice(note, 1);
+            const stringifyNoteDb = JSON.stringify(noteDb, '', 4);
+            writeFile('./db/db.json', stringifyNoteDb, (writeErr) => {
+                if (writeErr) {
+                    console.error(writeErr);
+                }
+                else {
+                    console.log('updated db/db.json');
+                };
+            });
+            res.status(200).send('notes.html');
+        };
+    };
 });
 
 app.get('*', (req, res) => res.sendFile(path.join(__dirname, 'public','index.html')));
-
 
 app.listen(PORT, () => console.log(`listening on http://localhost:${PORT}`));
