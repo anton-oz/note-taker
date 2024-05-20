@@ -7,9 +7,9 @@ const path = require('path');
 
 const noteDb = require('./db/db.json');
 
-const exp = require('constants');
+// const exp = require('constants');
 
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
@@ -36,7 +36,7 @@ app.post('/api/notes', (req, res) => {
             console.error(writeErr);
         }
         else {
-            console.log('updated db.json');
+            console.log('added new note to db/db.json');
         };
     });
     res.redirect('/notes');
@@ -60,6 +60,7 @@ app.get('/api/notes/:id', (req, res) => {
             res.status(404).json(errorObj);
         }
         else {
+            // Send note with matching ID
             res.status(200).json(noteDb[noteId - 1]);
         };
     };
@@ -78,7 +79,7 @@ app.delete('/api/notes/:id', (req, res) => {
                     console.error(writeErr);
                 }
                 else {
-                    console.log('updated db/db.json');
+                    console.log('removed note from db/db.json');
                 };
             });
             res.status(200).send('notes.html');

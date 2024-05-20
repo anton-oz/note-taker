@@ -1,38 +1,27 @@
 # Note Taker
 
+[Live Website Deployed on Render!](https://note-taker-0las.onrender.com/)
+
 ## Description
 
-Provide a short description explaining the what, why, and how of your project. Use the following questions as a guide:
-
-- What was your motivation?
-- Why did you build this project? (Note: the answer is not "Because it was a homework assignment.")
-- What problem does it solve?
-- What did you learn?
-
-I built this app because so that I could take quick notes online and store them persistently. With this app you can take notes, save them, shut down your computer then come back the next day to the same site and your same notes will be retrieved from storage and rendered for you to see. I learned how to set up routes with Express.js, 
-
+I built this app because so that I could take quick notes online and store them persistently. With this app you can take notes, save them, shut down your computer then come back the next day to the same site and your same notes will be retrieved from storage and rendered for you to see. I learned how to set up routes with Express.js, and improved my API skills by creating my own api route, retrieving the neccesary information and redirecting to the main page route to show the updated information.
 
 ## Installation
 
-What are the steps required to install your project? Provide a step-by-step description of how to get the development environment running.
+If accessing the app through the render link, the installation process is already completed for you.
+
+To run this app on your local machine you will need Node.js. To install node go to the [node website download page](https://nodejs.org/en/download/package-manager) and select your operating system. After you have installed node, navigate to the develop folder in this applications directory with the vscode terminal and install dependent node modules with ```npm i```.
 
 ## Usage
 
-Provide instructions and examples for use. Include screenshots as needed.
+If accessing the app through the render link, use the website by clicking the "Get Started" button. Then enter a note title and note text, click "Save Note" and your note will be saved. Click a saved note from the list on the left to see a previous note, or click the red trash button on a saved note to remove it.
 
-To add a screenshot, create an `assets/images` folder in your repository and upload your screenshot to it. Then, using the relative filepath, add it to your README using the following syntax:
+To run the server locally run ```node server.js``` from the develop directory with the vscode terminal, then go to your browser of choice and enter the url ```http://localhost:3001```. From this point follow same usage instructions as stated in previous paragraph.
 
-    ```md
-    ![alt text](assets/images/screenshot.png)
-    ```
 
 ## Credits
 
-List your collaborators, if any, with links to their GitHub profiles.
-
-If you used any third-party assets that require attribution, list the creators with links to their primary web presence in this section.
-
-If you followed tutorials, include links to those here as well.
+N/A
 
 ## License
 
