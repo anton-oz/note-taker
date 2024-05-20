@@ -7,8 +7,6 @@ const path = require('path');
 
 const noteDb = require('./db/db.json');
 
-// const exp = require('constants');
-
 const PORT = process.env.PORT || 3001;
 
 const app = express();
