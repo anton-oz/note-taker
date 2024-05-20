@@ -26,26 +26,27 @@ app.get('/notes', (req, res) => res.sendFile(path.join(__dirname, 'public', 'not
 app.get('/api/notes', (req, res) => res.json(noteDb));
 
 app.post('/api/notes', (req, res) => {
-    readFile('./db/db.json', 'utf8', (err, data) => {
-        if (err) {
-            console.error(err)
-        }
-        else {
-            const newNote = req.body;
-            console.log('\n', newNote, '\n');
-            newNote.id = noteDb.length === 0 ? 1 : noteDb[noteDb.length - 1].id + 1;
-            noteDb.push(newNote);
-            const stringifyNoteDb = JSON.stringify(noteDb, '', 4);
-            writeFile('./db/db.json', stringifyNoteDb, (writeErr) => {
-                if (writeErr) {
-                    console.error(writeErr);
-                }
-                else {
-                    console.log('updated db/db.json');
-                };
-            });
-        };
-    });
+        readFile('./db/db.json', 'utf8', (err, data) => {
+            if (err) {
+                console.error(err)
+            }
+            else {
+                const newNote = req.body;
+                console.log('\n', newNote, '\n');
+                newNote.id = noteDb.length === 0 ? 1 : noteDb[noteDb.length - 1].id + 1;
+                noteDb.push(newNote);
+                const stringifyNoteDb = JSON.stringify(noteDb, '', 4);
+                writeFile('./db/db.json', stringifyNoteDb, (writeErr) => {
+                    if (writeErr) {
+                        console.error(writeErr);
+                    }
+                    else {
+                        console.log('updated db/db.json');
+                    };
+                });
+            };
+        });
+        res.redirect('notes.html');
 });
 
 app.get('/api/notes/:id', (req, res) => {
